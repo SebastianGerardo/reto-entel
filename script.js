@@ -1,5 +1,14 @@
-const resultbox = document.querySelector("#result");
+// LLAMAR A LAS VARIABLES
+
 let listData = [];
+const resultbox = document.querySelector("#result");
+const modalImage = document.querySelector("#modal-img")
+const modalName = document.querySelector("#modal-name")
+const modalSecName = document.querySelector("#modal-s-name")
+const modalId = document.querySelector("#modal-id")
+const modalEmail = document.querySelector("#modal-email")
+const id = localStorage.getItem(`data-entel`);
+let listDataEntel = JSON.parse(id)
 
 // API
 
@@ -10,13 +19,11 @@ const entelDatos = async (page) => {
     setData(data.data);
 }
 
+// LOCAL STORAGE
+
 const localSt = (list) => {
     localStorage.setItem(`data-entel`, JSON.stringify(list));
 }
-
-let cerrar = document.querySelectorAll(".close")[0];
-            let modal = document.querySelectorAll(".modal")[0];
-            let modalC = document.querySelectorAll(".modal-container")[0];
 
 const setData = (data) => {
     data.map(async (result) => {
@@ -50,25 +57,8 @@ const setData = (data) => {
         })
     }
 
-    
-    const modalImage = document.querySelector("#modal-img")
-    const modalName = document.querySelector("#modal-name")
-    const modalSecName = document.querySelector("#modal-s-name")
-    const modalId = document.querySelector("#modal-id")
-    const modalEmail = document.querySelector("#modal-email")
- 
-    const id = localStorage.getItem(`data-entel`);
-    let listDataEntel = JSON.parse(id)
-    
-    
-    // 
-    
-// 
-
 
 // LLAMADO DE API
-
-const btnSearch = document.querySelector("#search");
 
 const deployData = () => {
     for (let i = 1; i < 3; i++) {
@@ -79,9 +69,7 @@ const deployData = () => {
     }
 }
 
-
-
-deployData()
+// MODAL
 
 const modalContent = (name, secName, mdl_img, mdl_id, mdl_email) => {
     modalName.innerHTML = name;
@@ -91,3 +79,6 @@ const modalContent = (name, secName, mdl_img, mdl_id, mdl_email) => {
     modalEmail.innerHTML = mdl_email;
 }
 
+// LLAMAR A LA FUNCIÓN
+
+deployData()
